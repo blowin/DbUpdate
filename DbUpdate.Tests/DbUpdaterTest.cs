@@ -8,20 +8,6 @@ namespace DbUpdate.Tests;
 public class DbUpdaterTest
 {
     [Fact]
-    public async Task Should_Throw_Exception_When_File_And_Directory_Does_Not_Exists()
-    {
-        const string scriptPath = "1.txt";
-        var sqlConnectionFactory = new TestSqlConnectionFactory((connectionString, token) => Task.CompletedTask);
-        var fileSystem = new Mock<IFileSystem>().Object;
-        var dbUpdate = new DbUpdater("dummy_connection_string", sqlConnectionFactory, fileSystem);
-
-        await Assert.ThrowsAsync<ArgumentException>(async () =>
-        {
-            await dbUpdate.ExecuteAsync(scriptPath, CancellationToken.None);
-        });
-    }
-    
-    [Fact]
     public async Task Should_Contain_Single_SuccessExecutions_When_Run_For_File_With_Success_Result()
     {
         const string scriptPath = "1.txt";

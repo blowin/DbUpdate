@@ -7,7 +7,6 @@ public interface IFileSystem
     IEnumerable<string> EnumerateFiles(string directory);
     Task<string> ReadAllTextAsync(string filePath, CancellationToken token);
     DateTime GetLastWriteTime(string filePath);
-    Stream OpenWrite(string filePath);
 }
 
 public class PhysicianFileSystem : IFileSystem
@@ -22,5 +21,4 @@ public class PhysicianFileSystem : IFileSystem
         File.ReadAllTextAsync(filePath, token);
 
     public DateTime GetLastWriteTime(string filePath) => new FileInfo(filePath).LastWriteTime;
-    public Stream OpenWrite(string filePath) => File.OpenWrite(filePath);
 }

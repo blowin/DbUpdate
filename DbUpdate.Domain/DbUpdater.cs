@@ -1,8 +1,17 @@
-﻿namespace DbUpdate.Domain;
+﻿using System.Text.Json;
+
+namespace DbUpdate.Domain;
 
 public record SuccessExecution(string Path);
 public record FailExecution(string Path, Exception Exception);
-public record DbUpdateResult(List<SuccessExecution> SuccessExecutions, List<FailExecution> FailExecutions);
+
+public record DbUpdateResult(List<SuccessExecution> SuccessExecutions, List<FailExecution> FailExecutions)
+{
+    public override string ToString()
+    {
+        return JsonSerializer.Serialize(this, new JsonSerializerOptions{ WriteIndented = true });
+    }
+}
 
 public sealed class DbUpdater
 {

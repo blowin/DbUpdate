@@ -25,6 +25,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DbUpdate.Domain\DbUpdate.Domain.csproj" />
+      <ProjectReference Include="..\DbUpdate.Infrastructure\DbUpdate.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@ using Moq;
 
 namespace DbUpdate.Tests;
 
-public class DbUpdateTest
+public class DbUpdaterTest
 {
     [Fact]
     public async Task Should_Throw_Exception_When_File_And_Directory_Does_Not_Exists()

@@ -25,8 +25,6 @@ public sealed class MarkdownReport : ReportBase
         await WriteTableHeader(new[] { "Path", "Message" });
         foreach (var (path, exception) in result.FailExecutions)
             await WriteTableLine(new[] { path, exception.Message });
-        await Writer.WriteLineAsync();
-
 
         await Writer.FlushAsync();
     }

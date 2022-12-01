@@ -29,7 +29,7 @@ public sealed class ReportFactory
         var writer = _writerFactory.Create(reportType);
         return reportType switch
         {
-            ReportType.CLI => new CLIReport(writer),
+            ReportType.CLI => new CLIReport(writer, new ConsoleProvider()),
             ReportType.Markdown => new MarkdownReport(writer),
             _ => throw new ArgumentOutOfRangeException(nameof(reportType), reportType, null)
         };

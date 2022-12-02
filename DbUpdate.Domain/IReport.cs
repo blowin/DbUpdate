@@ -1,6 +1,4 @@
-﻿using DbUpdate.Domain;
-
-namespace DbUpdate.Infrastructure.Reports;
+﻿namespace DbUpdate.Domain;
 
 public interface IReport : IAsyncDisposable
 {

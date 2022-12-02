@@ -28,27 +28,26 @@ public sealed class CLIReport : ReportBase
         _consoleProvider = consoleProvider;
     }
 
-    public override Task ReportAsync(DbUpdateResult result, CancellationToken token = default)
+    public override async Task ReportAsync(DbUpdateResult result, CancellationToken token = default)
     {
         foreach (var file in result.SuccessExecutions)
         {
             _consoleProvider.ForegroundColor = ConsoleColor.Green;
-            Writer.Write("Success:");
+            await Writer.WriteAsync("Success:");
             _consoleProvider.ResetColor();
             Writer.WriteLine("{0}", file.Path);
         }
 
-        Writer.WriteLine();
+        await Writer.WriteLineAsync();
 
         foreach (var (path, exception) in result.FailExecutions)
         {
             _consoleProvider.ForegroundColor = ConsoleColor.Red;
-            Writer.Write("Fail:");
+            await Writer.WriteAsync("Fail:");
             _consoleProvider.ResetColor();
-            Writer.WriteLine("{0}", path);
-            Writer.WriteLine("{0}", exception.Message);
+            await Writer.WriteLineAsync(path);
+            await Writer.WriteLineAsync(exception.Message);
         }
-        Writer.Flush();
-        return Task.CompletedTask;
+        await Writer.FlushAsync();
     }
 }

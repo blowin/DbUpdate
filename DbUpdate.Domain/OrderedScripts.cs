@@ -23,7 +23,7 @@ public readonly struct OrderedScripts : IEnumerable<string>
 
         if (_fileSystem.DirectoryExists(_path))
         {
-            foreach (var file in _fileSystem.EnumerateFiles(_path).OrderBy(_fileSystem.GetLastWriteTime))
+            foreach (var file in _fileSystem.EnumerateFiles(_path).OrderBy(Path.GetFileName))
                 yield return file;
             yield break;
         }

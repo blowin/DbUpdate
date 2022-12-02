@@ -27,12 +27,9 @@ public class OrderedScriptsTest
             
             yield return new object[]
             {
-                new string[]{ "3.txt", "1.txt", "2.txt" },
+                new string[]{ "1.txt", "2.txt", "3.txt" },
                 CreateFileSystem(mock => mock.Setup(system => system.DirectoryExists("folder")).Returns(true),
-                    mock => mock.Setup(system => system.EnumerateFiles("folder")).Returns(new string[]{ "1.txt", "2.txt", "3.txt" }),
-                    mock => mock.Setup(system => system.GetLastWriteTime("1.txt")).Returns(new DateTime(2002, 1, 1)),
-                    mock => mock.Setup(system => system.GetLastWriteTime("2.txt")).Returns(new DateTime(2003, 1, 1)),
-                    mock => mock.Setup(system => system.GetLastWriteTime("3.txt")).Returns(new DateTime(2001, 1, 1))),
+                    mock => mock.Setup(system => system.EnumerateFiles("folder")).Returns(new string[]{ "3.txt", "1.txt", "2.txt" })),
                 "folder"
             };
         }

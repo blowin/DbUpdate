@@ -6,7 +6,6 @@ public interface IFileSystem
     bool DirectoryExists(string path);
     IEnumerable<string> EnumerateFiles(string directory);
     Task<string> ReadAllTextAsync(string filePath, CancellationToken token);
-    DateTime GetLastWriteTime(string filePath);
 }
 
 public class PhysicianFileSystem : IFileSystem
@@ -19,6 +18,4 @@ public class PhysicianFileSystem : IFileSystem
 
     public Task<string> ReadAllTextAsync(string filePath, CancellationToken token) =>
         File.ReadAllTextAsync(filePath, token);
-
-    public DateTime GetLastWriteTime(string filePath) => new FileInfo(filePath).LastWriteTime;
 }

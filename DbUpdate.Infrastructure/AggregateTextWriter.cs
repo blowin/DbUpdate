@@ -50,7 +50,6 @@ public sealed class AggregateTextWriter : TextWriter
             textWriter.Write(value);
     }
     
-    [CLSCompliant(false)]
     public override void Write(uint value)
     {
         foreach (var textWriter in _writers)
@@ -62,8 +61,7 @@ public sealed class AggregateTextWriter : TextWriter
         foreach (var textWriter in _writers)
             textWriter.Write(value);
     }
-        
-    [CLSCompliant(false)]
+    
     public override void Write(ulong value)
     {
         foreach (var textWriter in _writers)
@@ -171,8 +169,7 @@ public sealed class AggregateTextWriter : TextWriter
         foreach (var textWriter in _writers)
             textWriter.WriteLine(value);
     }
-        
-    [CLSCompliant(false)]
+    
     public override void WriteLine(uint value)
     {
         foreach (var textWriter in _writers)
@@ -184,8 +181,7 @@ public sealed class AggregateTextWriter : TextWriter
         foreach (var textWriter in _writers)
             textWriter.WriteLine(value);
     }
-        
-    [CLSCompliant(false)]
+    
     public override void WriteLine(ulong value)
     {
         foreach (var textWriter in _writers)

@@ -1,6 +1,4 @@
-﻿
-using System.Globalization;
-using CommandLine;
+﻿using CommandLine;
 using DbUpdate.Domain;
 using DbUpdate.Infrastructure;
 
